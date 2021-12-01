@@ -1,6 +1,15 @@
 import os
 import pandas as pd
 
+
+class CountryAcqusition:
+    universe = 'acquisition'
+
+    def __init__(self, name, tuple_list):
+        self.country_name = name
+        self.year_amount_list = tuple_list  # list of tuples consists of year and amount pairs
+
+
 files_list = os.listdir(f'{os.getcwd()}/data')
 # create dictionary of dictionaries
 
@@ -10,13 +19,7 @@ for file in files_list:
     d[str(file)+'_dict'] = a.to_dict()
 
 
-# citizenship_df = pd.read_excel(f'{os.getcwd()}{os.sep}data{os.sep}{files_list[0]}', sheet_name='Sheet 1', header=11)
-# citizenship_dict = citizenship_df.to_dict()
-# # for example Belgium
-# country = citizenship_dict['TIME'][5]
-# year_2008 = citizenship_dict['2008'][5]
-#
-# print(country, year_2008)
-#
-# EU_countries = [element for element in citizenship_dict["TIME"].values()]
-# EU_countries_tuples = [element for element in citizenship_dict["TIME"].items()]
+# list of countries with inedexes
+
+country_tuples = d['tps00024_spreadsheet.xlsx_dict']['TIME'].items()
+country_tuples_list = [element for element in country_tuples]
