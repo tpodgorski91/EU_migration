@@ -15,11 +15,16 @@ files_list = os.listdir(f'{os.getcwd()}/data')
 
 d = {}
 for file in files_list:
-    a = pd.read_excel(f"{os.getcwd()}{os.sep}data{os.sep}{file}", sheet_name='Sheet 1', header=11)
-    d[str(file)+'_dict'] = a.to_dict()
+    temp_df = pd.read_excel(f"{os.getcwd()}{os.sep}data{os.sep}{file}", sheet_name='Sheet 1', header=11)
+    d[str(file)+'_dict'] = temp_df.to_dict()
 
 
 # list of countries with inedexes
 
 country_tuples = d['tps00024_spreadsheet.xlsx_dict']['TIME'].items()
 country_tuples_list = [element for element in country_tuples]
+
+
+year_d = {}
+for i in range(2008,2020):
+    year_d['year_'+str(i)] = d['tps00024_spreadsheet.xlsx_dict'][str(i)]
