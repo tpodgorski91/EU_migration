@@ -19,12 +19,29 @@ for file in files_list:
     d[str(file)+'_dict'] = temp_df.to_dict()
 
 
-# list of countries with inedexes
-
-country_tuples = d['tps00024_spreadsheet.xlsx_dict']['TIME'].items()
-country_tuples_list = [element for element in country_tuples]
-
+country_d = d['tps00024_spreadsheet.xlsx_dict']['TIME']
 
 year_d = {}
-for i in range(2008,2020):
+
+for i in range(2008, 2020):
     year_d['year_'+str(i)] = d['tps00024_spreadsheet.xlsx_dict'][str(i)]
+
+
+def match_dicts():
+    pairs_d = {}
+
+    for key in set(list(country_d.keys()) + list(year_d['year_2008'].keys())):
+        try:
+            pairs_d.setdefault(key,[]).append(country_d[key])
+        except KeyError:
+            pass
+
+        try:
+            pairs_d.setdefault(key,[]).append(year_d['year_2008'][key])
+        except KeyError:
+            pass
+    return pairs_d
+
+
+if __name__ == '__main__':
+    print(match_dicts())
