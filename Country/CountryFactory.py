@@ -11,6 +11,20 @@ class CountryAcqusition:
 
 
 files_list = os.listdir(f'{os.getcwd()}/data')
+
+# creates list of df rows where 0 position is country and rest of them are years in order 2008-2019
+
+import pandas as pd
+file_path = r"D:\Maszt071\Python knownledge\migration_europe\data\tps00024_spreadsheet.xlsx"
+tmp_df = pd.read_excel(file_path, sheet_name="Sheet 1", header=11, usecols=[0] + [i for i in range(1, 24, 2)])
+l_tmp = tmp_df.values.tolist()
+
+
+
+
+
+
+
 # create dictionary of dictionaries
 
 d = {}
