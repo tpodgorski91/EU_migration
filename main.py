@@ -41,8 +41,7 @@ top5 = tmp_series['citizenship'].nlargest(n=5)
 
 #vizual
 
+years_l = [str(year) for year in range(2008, 2020)]
 
-# plt.plot([str(year) for year in range(2008, 2020)], df_t['Poland'], label='Poland')
-# plt.plot([str(year) for year in range(2008, 2020)], df_t['France'], label='France')
-
-
+for country in top5.index:
+    plt.plot([str(year) for year in range(2008, 2020)], df_t[country], label=country)
