@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+#redundant comment
 
 # load
 cols_name = [str(year) for year in range(2008, 2020)]
