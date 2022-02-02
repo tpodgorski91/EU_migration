@@ -45,3 +45,6 @@ years_l = [str(year) for year in range(2008, 2020)]
 
 for country in top5.index:
     plt.plot([str(year) for year in range(2008, 2020)], df_t[country], label=country)
+    plt.legend()
+    plt.title("UE TOP5 acquisition of citizenship", fontsize=20)
+    plt.grid(True)
